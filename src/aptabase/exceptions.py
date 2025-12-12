@@ -16,7 +16,8 @@ class ConfigurationError(AptabaseError):
 class NetworkError(AptabaseError):
     """Raised when network requests fail."""
 
-    def __init__(self, message: str, status_code: int = None) -> None:
+    def __init__(self, message: str, status_code: int | None = None) -> None:
+        """Initialize the NetworkError exception."""
         super().__init__(message)
         self.status_code = status_code
 

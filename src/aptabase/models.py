@@ -39,9 +39,9 @@ class Event:
     """Represents an analytics event to be sent to Aptabase."""
 
     name: str
-    props: dict[str, Any] | None = None
     timestamp: datetime | None = None
     session_id: str | None = None
+    props: dict[str, Any] | None = None
 
     def __post_init__(self) -> None:
         """Set default values after initialization."""
@@ -55,7 +55,7 @@ class Event:
     def to_dict(self, system_props: SystemProperties) -> dict[str, Any]:
         """Convert to dictionary format for API requests."""
         return {
-            "timestamp": self.timestamp.isoformat() + "Z",
+            "timestamp": self.timestamp.isoformat() + "Z" if self.timestamp else None,
             "sessionId": self.session_id,
             "eventName": self.name,
             "systemProps": system_props.to_dict(),
