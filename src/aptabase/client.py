@@ -51,7 +51,7 @@ class Aptabase:
         if not app_key or not isinstance(app_key, str):
             raise ConfigurationError("App key is required and must be a string")
 
-        if not app_key.startswith(("A-EU-", "A-US-")):
+        if not app_key.startswith(("A-EU-", "A-US-", "A-SH-")):
             raise ConfigurationError(
                 "Invalid app key format. Expected format: A-{REGION}-{ID}"
             )

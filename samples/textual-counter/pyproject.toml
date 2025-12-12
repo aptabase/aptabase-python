@@ -9,7 +9,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "textual>=6.7.1",
-    "aptabase>=0.0.2",
+    "aptabase>=0.0.3",
 ]
 license = {text = "MIT"}
 keywords = ["textual", "tui", "analytics", "aptabase", "counter"]
