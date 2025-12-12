@@ -73,6 +73,7 @@ line-ending = "auto"
 mypy_path = "src"
 explicit_package_bases = true
 namespace_packages = true
+exclude = ["samples/", "testcases/"]
 follow_imports = "silent"
 warn_redundant_casts = true
 warn_unused_ignores = true
