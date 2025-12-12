@@ -604,7 +604,7 @@ class TestModels:
         assert props.device_model is not None
         assert props.is_debug is False
         assert props.app_version == "1.0.0"
-        assert props.sdk_version == "0.0.1"
+        assert props.sdk_version == "aptabase-python@0.1.0"
 
     def test_system_properties_custom(self):
         """Test SystemProperties with custom values."""
