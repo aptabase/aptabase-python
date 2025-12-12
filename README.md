@@ -1,5 +1,10 @@
 # Aptabase Python SDK
 
+[![PyPI downloads](https://img.shields.io/pypi/dm/aptabase.svg)](https://pypi.org/project/aptabase/)
+[![PyPI - Version](https://img.shields.io/pypi/v/aptabase)](https://img.shields.io/pypi/v/aptabase)
+[![Python versions](https://img.shields.io/pypi/pyversions/aptabase.svg)](https://pypi.org/project/aptabase/)
+
+
 Python SDK for [Aptabase](https://aptabase.com/) - privacy-first analytics for mobile, desktop and web applications.
 
 ## Features
@@ -91,7 +96,7 @@ async with Aptabase("A-EU-1234567890") as client:
     # Automatically handles start/stop and flushing
 ```
 
-### Manual Lifecycle
+### Manual
 
 ```python
 client = Aptabase("A-EU-1234567890")
@@ -144,4 +149,4 @@ uv run mypy .
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+[MIT License](LICENSE)
