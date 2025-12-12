@@ -154,14 +154,14 @@ wheels = [
 
 [[package]]
 name = "aptabase"
-version = "0.0.3"
+version = "0.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/bf/c7/4cd7f130307eaa4b7b66be483d7dde72138330d606c749419bebc2440ffb/aptabase-0.0.3.tar.gz", hash = "sha256:ab13b1b97afdde37d86208676d1ce687f13ebfa3bc2749e88d305b344e1c6532", size = 137390, upload-time = "2025-12-12T15:48:45.267Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b0/3a/ad490f13f9d6378d357411c498a96e513e76fdfa49e963ffafed52d37405/aptabase-0.1.0.tar.gz", hash = "sha256:5831fff24e6a889873d15f9687869228f9a87d3b7cd52a0a2b4fb8506de1da4f", size = 144602, upload-time = "2025-12-12T17:15:42.194Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7f/e5/06160c68d685848a3a7f4981c5118aff03b49256c5765a2249c986750501/aptabase-0.0.3-py3-none-any.whl", hash = "sha256:2847a6a67bfef9985ce939cad35e40ba7155762322d70c25ac9ab4594c46c702", size = 7475, upload-time = "2025-12-12T15:48:43.931Z" },
+    { url = "https://files.pythonhosted.org/packages/d5/53/39484a36ac4bd5e0fa3d8f5ddebd12fc7d0247a58d30582e0a5dde394739/aptabase-0.1.0-py3-none-any.whl", hash = "sha256:c9417178497f1d217ed0e41f1d2b95b759b7e5fa3583b0cbc302228ccd91e281", size = 7523, upload-time = "2025-12-12T17:15:40.731Z" },
 ]
 
 [[package]]
@@ -1029,7 +1029,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "aptabase", specifier = ">=0.0.3" },
+    { name = "aptabase", specifier = ">=0.1.0" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.7.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4.0" },
     { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.21.0" },
