@@ -33,7 +33,7 @@ Aptabase = "https://aptabase.com/"
 Textual = "https://textual.textualize.io/"
 
 [project.scripts]
-dashboard = "textual_aptabase_demo:main"
+dashboard = "dashboard:main"
 
 [project.optional-dependencies]
 dev = [

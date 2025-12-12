@@ -31,7 +31,7 @@ The app includes:
 uv add textual aptabase
 
 # Run the app
-uv run main.py
+uv run dashboard.py
 ```
 
 ### Using pip
@@ -45,12 +45,20 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install 
 
 # Run the app
-python main.py
+python dashboard.py
+```
+
+#### Using pyproject.toml
+
+```bash
+# If you have the pyproject.toml file
+uv sync
+uv run dashboard
 ```
 
 ## Configuration
 
-Before running, update the `APP_KEY` in `main.py`:
+Before running, update the `APP_KEY` in `dashboard.py`:
 
 ```python
 # Replace with your actual Aptabase app key
@@ -64,7 +72,7 @@ Get your app key from the [Aptabase dashboard](https://aptabase.com/).
 ### Running the App
 
 ```bash
-python main.py
+python dashboard.py
 ```
 
 ### Keyboard Shortcuts

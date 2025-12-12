@@ -47,6 +47,12 @@ async def main():
 asyncio.run(main())
 ```
 
+## Samples
+
+- [Simple Script](https://github.com/aptabase/aptabase-python/tree/main/samples/simple-script)
+- [Textual Counter App](https://github.com/aptabase/aptabase-python/tree/main/samples/textual-counter)
+- [Textual Dashboard App](https://github.com/aptabase/aptabase-python/tree/main/samples/textual-dashboard)
+
 ## Configuration
 
 ```python
