@@ -28,8 +28,7 @@ class Aptabase:
         flush_interval: float = 10.0,
         timeout: float = 30.0,
     ) -> None:
-        """
-        Initialize the Aptabase client.
+        """Initialize the Aptabase client.
 
         Args:
             app_key: Your Aptabase app key (format: A-{REGION}-{ID})
@@ -63,7 +62,7 @@ class Aptabase:
         self._event_queue: list[Event] = []
         self._queue_lock = asyncio.Lock()
         self._client: httpx.AsyncClient | None = None
-        self._flush_task: asyncio.Task | None = None
+        self._flush_task: asyncio.Task[Any] | None = None
         self._session_id: str | None = None
 
     def _get_base_url(self, app_key: str) -> str:
@@ -123,8 +122,7 @@ class Aptabase:
         *,
         session_id: str | None = None,
     ) -> None:
-        """
-        Track an analytics event.
+        """Track an analytics event.
 
         Args:
             event_name: Name of the event to track
@@ -172,6 +170,8 @@ class Aptabase:
 
     async def _send_events(self, events: list[Event]) -> None:
         """Send events to the Aptabase API."""
+        assert self._client is not None, "HTTP client is not initialized"
+
         if not events:
             return
 
