@@ -14,6 +14,12 @@ from .models import Event, SystemProperties
 
 logger = logging.getLogger(__name__)
 
+_HOSTS = {
+    "EU": "https://eu.aptabase.com",
+    "US": "https://us.aptabase.com",
+    "SH": None,  # Self-hosted, requires custom base_url in options
+}
+
 
 class Aptabase:
     """Aptabase analytics client."""
@@ -27,6 +33,7 @@ class Aptabase:
         max_batch_size: int = 25,
         flush_interval: float = 10.0,
         timeout: float = 30.0,
+        base_url: str | None = None,
     ) -> None:
         """Initialize the Aptabase client.
 
@@ -50,7 +57,7 @@ class Aptabase:
             raise ConfigurationError("Maximum batch size is 25 events")
 
         self._app_key = app_key
-        self._base_url = self._get_base_url(app_key)
+        self._base_url = base_url or self._get_base_url(app_key)
         self._system_props = SystemProperties(
             app_version=app_version,
             is_debug=is_debug,
@@ -67,10 +74,20 @@ class Aptabase:
 
     def _get_base_url(self, app_key: str) -> str:
         """Determine the base URL from the app key."""
-        if app_key.startswith("A-EU-"):
-            return "https://api-eu.aptabase.com/"
-        elif app_key.startswith("A-US-"):
-            return "https://api.aptabase.com/"
+        parts = app_key.split("-")
+
+        if len(parts) != 3 or parts[1] not in _HOSTS:
+            raise ConfigurationError("The Aptabase App Key is invalid.")
+
+        region = parts[1]
+
+        # If self-hosted, require base_url in init
+        if region == "SH":
+            raise ConfigurationError("Self-hosted app key requires base_url in init.")
+
+        host = _HOSTS.get(region, None)
+        if host:
+            return host
         else:
             raise ConfigurationError("Invalid app key region")
 

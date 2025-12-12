@@ -31,6 +31,11 @@ class CounterApp(App):
     }
     """
 
+    BINDINGS = [
+        ("q", "quit", "Quit"),
+        ("ctrl+c", "quit", "Quit"),
+    ]
+    
     def __init__(self, app_key: str = "A-EU-0000000000"):
         super().__init__()
         self.app_key = app_key
@@ -87,8 +92,12 @@ class CounterApp(App):
         counter_widget = self.query_one("#counter", Static)
         counter_widget.update(f"[bold cyan]Count: {self.counter}[/bold cyan]")
 
-
-if __name__ == "__main__":
+def main():
+    """Run the counter app"""
     # Replace with your Aptabase app key
     app = CounterApp(app_key="A-EU-0000000000")
     app.run()
+
+
+if __name__ == "__main__":
+    main()
