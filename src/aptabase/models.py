@@ -19,7 +19,7 @@ class SystemProperties:
     device_model: str = field(default_factory=platform.machine)
     is_debug: bool = False
     app_version: str = "1.0.0"
-    sdk_version: str = "0.0.1"
+    sdk_version: str = "aptabase-python@0.1.0"
 
     def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary format for API requests."""
