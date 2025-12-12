@@ -7,7 +7,6 @@ Python SDK for [Aptabase](https://aptabase.com/) - privacy-first analytics for m
 - 🚀 **Fully async** - Built with `httpx` and `asyncio`
 - 🔒 **Privacy-first** - No personal data collection
 - 🏃 **Modern Python** - Requires Python 3.11+
-- 📦 **Type-safe** - Full typing support
 - 🔄 **Auto-batching** - Efficient event batching and flushing
 - ⚡ **Lightweight** - Minimal dependencies
 
@@ -82,19 +81,9 @@ await client.track("purchase", {
 })
 ```
 
-### Session Management
+## Lifecycle
 
-```python
-# Set a custom session ID
-client.set_session_id("my-custom-session-id")
-
-# Track events with specific session
-await client.track("login", session_id="user-session-123")
-```
-
-## Context Manager vs Manual Lifecycle
-
-### Recommended: Context Manager
+### Context Manager
 
 ```python
 async with Aptabase("A-EU-1234567890") as client:
@@ -144,7 +133,6 @@ uv run pytest
 Code formatting:
 
 ```bash
-uv run black .
 uv run ruff check .
 ```
 
