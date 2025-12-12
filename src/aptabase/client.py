@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from datetime import datetime, timedelta
 from typing import Any
 from urllib.parse import urljoin
 
@@ -19,6 +20,8 @@ _HOSTS = {
     "US": "https://us.aptabase.com",
     "SH": None,  # Self-hosted, requires custom base_url in options
 }
+
+_SESSION_TIMEOUT = timedelta(hours=1)
 
 
 class Aptabase:
@@ -71,6 +74,7 @@ class Aptabase:
         self._client: httpx.AsyncClient | None = None
         self._flush_task: asyncio.Task[Any] | None = None
         self._session_id: str | None = None
+        self._last_touched: datetime | None = None
 
     def _get_base_url(self, app_key: str) -> str:
         """Determine the base URL from the app key."""
@@ -132,13 +136,7 @@ class Aptabase:
             await self._client.aclose()
             self._client = None
 
-    async def track(
-        self,
-        event_name: str,
-        props: dict[str, Any] | None = None,
-        *,
-        session_id: str | None = None,
-    ) -> None:
+    async def track(self, event_name: str, props: dict[str, Any] | None = None) -> None:
         """Track an analytics event.
 
         Args:
@@ -152,15 +150,17 @@ class Aptabase:
         if props is not None and not isinstance(props, dict):
             raise ValidationError("Event properties must be a dictionary")
 
+        # Get or create session (handles timeout automatically)
+        session_id = self._get_or_create_session()
+
         event = Event(
             name=event_name,
             props=props,
-            session_id=session_id or self._session_id,
+            session_id=session_id,
         )
 
         async with self._queue_lock:
             self._event_queue.append(event)
-
             # Auto-flush if we reach the batch size
             if len(self._event_queue) >= self._max_batch_size:
                 await self._flush_events()
@@ -216,8 +216,26 @@ class Aptabase:
         except asyncio.CancelledError:
             pass
 
-    def set_session_id(self, session_id: str) -> None:
-        """Set the session ID for future events."""
-        if not session_id or not isinstance(session_id, str):
-            raise ValidationError("Session ID must be a non-empty string")
-        self._session_id = session_id
+    def _get_or_create_session(self) -> str:
+        """Get current session or create new one if expired."""
+        now = datetime.now()
+
+        if self._session_id is None or self._last_touched is None:
+            self._session_id = self._new_session_id()
+            self._last_touched = now
+        elif now - self._last_touched > _SESSION_TIMEOUT:
+            self._session_id = self._new_session_id()
+            self._last_touched = now
+        else:
+            self._last_touched = now
+
+        return self._session_id
+
+    @staticmethod
+    def _new_session_id() -> str:
+        """Generate a new session ID."""
+        import random
+
+        epoch_seconds = int(datetime.now().timestamp())
+        random_part = random.randint(0, 99999999)
+        return str(epoch_seconds * 100000000 + random_part)
