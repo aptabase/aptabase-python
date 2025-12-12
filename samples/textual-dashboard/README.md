@@ -223,6 +223,9 @@ pip install
 # Or with uv
 uv sync
 ```
+### Events don't show
+
+Make sure to check the Debug-mode dashboard (not Release-mode)
 
 ## Resources
 

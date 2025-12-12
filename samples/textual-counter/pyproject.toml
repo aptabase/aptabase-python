@@ -5,11 +5,11 @@ description = "A simple counter app demonstrating Aptabase analytics integration
 authors = [
     {name = "Your Name", email = "your.email@example.com"}
 ]
-readme = "README_COUNTER.md"
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "textual>=6.7.1",
-    "aptabase>=0.0.1",
+    "aptabase>=0.0.2",
 ]
 license = {text = "MIT"}
 keywords = ["textual", "tui", "analytics", "aptabase", "counter"]
@@ -30,7 +30,7 @@ Repository = "https://github.com/yourusername/textual-aptabase-counter"
 "Bug Tracker" = "https://github.com/yourusername/textual-aptabase-counter/issues"
 
 [project.scripts]
-counter = "main:main"
+counter = "counter:main"
 
 [build-system]
 requires = ["hatchling"]

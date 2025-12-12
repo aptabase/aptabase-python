@@ -35,7 +35,7 @@ This is a simple counter app that:
 uv pip install textual aptabase
 
 # Run the app
-uv run main.py
+uv run counter.py
 ```
 
 #### Using pip
@@ -49,7 +49,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install textual aptabase
 
 # Run the app
-python main.py
+python counter.py
 ```
 
 #### Using pyproject.toml
@@ -67,7 +67,7 @@ Before running, you need to set your Aptabase app key:
 1. Sign up at [aptabase.com](https://aptabase.com/)
 2. Create a new app
 3. Copy your app key (format: `A-EU-XXXXXXXXXX` or `A-US-XXXXXXXXXX`)
-4. Update the key in `simple_counter.py`:
+4. Update the key in `counter.py`:
 
 ```python
 # Replace with your actual Aptabase app key
@@ -120,7 +120,7 @@ Sent when the app exits.
 
 ## 🎮 Usage
 
-1. **Start the app**: Run `python simple_counter.py`
+1. **Start the app**: Run `python main.py`
 2. **Click the button**: Press "Click Me!" to increment (or press `Enter` when focused)
 3. **Reset**: Click "Reset" to set counter back to zero
 4. **Quit**: Press `q` or `Ctrl+C`
@@ -244,55 +244,31 @@ pip install textual aptabase
 python --version  # Must be 3.11+
 ```
 
+### Events don't show
+
+Make sure to check the Debug-mode dashboard (not Release-mode)
+
 ## 📚 Learn More
 
-### Next Steps
+## Resources
 
-Once you're comfortable with this simple example, check out:
+- [Aptabase Documentation](https://aptabase.com/docs)
+- [Textual Documentation](https://textual.textualize.io/)
+- [Aptabase Python SDK](https://github.com/aptabase/aptabase-python)
 
-1. **textual_aptabase_demo.py** - Full dashboard with tabs, forms, and real-time stats
-2. **advanced_patterns.py** - User identification, error tracking, performance monitoring
-
-### Resources
-
-- **Aptabase**: [https://aptabase.com/docs](https://aptabase.com/docs)
-- **Aptabase Python SDK**: [https://github.com/aptabase/aptabase-py](https://github.com/aptabase/aptabase-py)
-- **Textual**: [https://textual.textualize.io/](https://textual.textualize.io/)
-- **Textual Tutorial**: [https://textual.textualize.io/tutorial/](https://textual.textualize.io/tutorial/)
-
-## 🔐 Privacy
-
-Aptabase is privacy-first analytics:
-- ✅ No personal data collected
-- ✅ No IP addresses stored  
-- ✅ No cookies or tracking
-- ✅ GDPR compliant
-- ✅ Open source
-
-This example only tracks:
-- Counter values (anonymous)
-- Button click events
-- Session duration
-- App lifecycle events
-
-## 📄 License
+## License
 
 MIT License - feel free to use this as a starting point for your own projects!
 
-## 🤝 Contributing
+## Contributing
 
-This is a simple example/demo. Feel free to:
-- Fork and modify
-- Use in your own projects
-- Share improvements
+This is a demo app. Feel free to fork and modify for your needs!
 
-## ❓ Questions?
+## Questions?
 
-- **Aptabase Support**: [https://aptabase.com/](https://aptabase.com/)
-- **Textual Discord**: [https://discord.gg/Enf6Z3qhVr](https://discord.gg/Enf6Z3qhVr)
+- Aptabase: [https://aptabase.com/](https://aptabase.com/)
+- Textual: [https://textual.textualize.io/](https://textual.textualize.io/)
 
 ---
-
-**Happy coding!** 🚀
 
 Built with ❤️ using [Textual](https://textual.textualize.io/) and [Aptabase](https://aptabase.com/)
